@@ -1,0 +1,54 @@
+
+
+CREATE TABLE `user_tbl` (
+  `uname_id_fld` int(11) NOT NULL AUTO_INCREMENT,
+  `uname_fld` varchar(128) NOT NULL,
+  `fname_fld` varchar(128) NOT NULL,
+  `lname_fld` varchar(128) NOT NULL,
+  `department_id_fld` int(255) NOT NULL,
+  `program_id_fld` int(255) NOT NULL,
+  `role_fld` varchar(255) NOT NULL,
+  `email_fld` varchar(255) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `password_hash_fld` varchar(255) NOT NULL,
+  PRIMARY KEY (`uname_id_fld`),
+  UNIQUE KEY `email_fld` (`email_fld`),
+  UNIQUE KEY `uname_fld` (`uname_fld`),
+  KEY `department_id_fld_fk` (`department_id_fld`),
+  KEY `program_id_fld_fk` (`program_id_fld`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+
+
+
+
+
+CREATE TABLE `department_tbl` (
+  `department_id_fld` int(255) NOT NULL AUTO_INCREMENT,
+  `department_name_fld` varchar(255) NOT NULL,
+  PRIMARY KEY (`department_id_fld`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+
+
+
+
+CREATE TABLE `queue_rules_tbl` (
+  `queue_id_fld` int(255) NOT NULL AUTO_INCREMENT,
+  `queue_no_id_fld` int(128) NOT NULL,
+  `department_id_fld` int(255) NOT NULL,
+  `program_id_fld` int(255) NOT NULL,
+  `uname_id_fld` int(11) NOT NULL,
+  `is_final_fld` tinyint(1) NOT NULL,
+  PRIMARY KEY (`queue_id_fld`),
+  KEY `uname_id_fld` (`uname_id_fld`),
+  KEY `department_id_fld_fk` (`department_id_fld`),
+  KEY `program_id_fld_fk` (`program_id_fld`),
+  KEY `queue_no_id_fld_fk` (`queue_no_id_fld`) USING BTREE,
+  CONSTRAINT `department_id_fld_fk` FOREIGN KEY (`department_id_fld`) REFERENCES `department_tbl` (`department_id_fld`),
+  CONSTRAINT `program_id_fld_fk` FOREIGN KEY (`program_id_fld`) REFERENCES `program_tbl` (`program_id_fld`),
+  CONSTRAINT `queue_no_id_fld_fk` FOREIGN KEY (`queue_no_id_fld`) REFERENCES `queue_tbl` (`queue_no_id_fld`),
+  CONSTRAINT `uname_id_fld_fk` FOREIGN KEY (`uname_id_fld`) REFERENCES `user_tbl` (`uname_id_fld`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
+
