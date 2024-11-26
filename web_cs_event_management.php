@@ -3,15 +3,23 @@
 <!-- Header -->
 <header class="w3-container" style="padding-top:22px">
     <h5><b><i class="fa fa-magic"></i> Club Event Management</b></h5>
-            <!-- <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script> -->
-            <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+        <!--   JQuery source link   -->
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!--   DataTables (CSS) source link   -->
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+        <!--   DataTables (JS) source link   -->
             <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> 
+
+        <!--   Select2 (CSS) source link   -->
             <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+        <!--   Select2 (JS) source link   -->
             <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
        
-            <style>
-
+        <style>
             /* Create User error CSS */
                 .error-message {
                     color: red;
@@ -80,8 +88,7 @@
                     resize: vertical;
                     overflow: hidden;
                 }
-                
-            </style>
+        </style>
 
 </header>
 
@@ -99,133 +106,6 @@
                 
                 $user = $result->fetch_assoc();
             }
-
-
-
-            
-
-            // var_dump($all_queue_rules);
-            // var_dump($stmt_queue_rules);
-
-            // echo json_encode($stmt_queue_rules);
-
-            // $stmt_queue_rules->close();
-            // $mysqli->close();
-            
-            // $data = [];
-            // while ($row = $result_queue_rules->fetch_assoc()) {
-            //     $data[] = [
-            //         'id' => $row['department_id_fld'],
-            //         'text' => $row['department_name_fld']
-            //     ];
-            // }
-
-            // $stmt = $mysqli->stmt_init();
-
-            // if (!$stmt->prepare($sql)) {
-            //     die("SQL error: " . $mysqli->error);
-            // }
-
-            // // Bind parameters and execute
-            // $stmt->bind_param(
-            //     "ssssssss",
-            //     $_GET["queue_id_fld"],
-            //     $_GET["uname_fld"],
-            //     $_GET["fullname"],
-            //     $_GET["department_name_fld"],
-            //     $_GET["program_name_fld"],
-            //     $_GET["queue_name_fld"],
-            //     $_GET["queue_no_fld"],
-            //     $_GET["is_final_fld"]
-            // );        
-
-            // $stmt->execute;
-
-            // var_dump($all_queue_rules);
-            
-            
-
-
-
-
-
-
-
-
-        // // Fetch the user's assigned queue names
-        // $sql_queue_rules = "SELECT b.queue_name_fld 
-        //                     FROM queue_rules_tbl AS a
-        //                     LEFT JOIN queue_tbl AS b 
-        //                         ON a.queue_no_id_fld = b.queue_no_id_fld
-        //                     WHERE a.uname_id_fld = ?";
-        // $stmt_queue = $mysqli->prepare($sql_queue_rules);
-        // $stmt_queue->bind_param("i", $_SESSION["user_id"]);
-        // $stmt_queue->execute();
-        // $result_queue = $stmt_queue->get_result();
-        // $assigned_queues = $result_queue->fetch_all(MYSQLI_ASSOC);
-
-        // // Extract queue names for filtering
-        // $queue_names = array_column($assigned_queues, 'queue_name_fld');
-
-        // if (!empty($queue_names)) {
-        //     // Prepare placeholders for the IN clause dynamically
-        //     $in_clause = implode(',', array_fill(0, count($queue_names), '?'));
-        //     $sql_club_event_proposal = "
-        //         SELECT club_event_name_fld, 
-        //             target_date_fld, 
-        //             status_fld, 
-        //             date_submitted_fld 
-        //         FROM club_event_proposal_tbl 
-        //         WHERE queue_name_fld IN ($in_clause)
-        //     ";
-
-        //     // Bind the queue names to the SQL query
-        //     $stmt_proposal = $mysqli->prepare($sql_club_event_proposal);
-        //     $stmt_proposal->bind_param(str_repeat('s', count($queue_names)), ...$queue_names);
-        //     $stmt_proposal->execute();
-        //     $result_proposal = $stmt_proposal->get_result();
-        //     $all_club_event_proposal = $result_proposal->fetch_all(MYSQLI_ASSOC);
-        // } else {
-        //     $all_club_event_proposal = [];
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // $sql_club_event_proposal = "SELECT club_event_name_fld, 
-            //                                     target_date_fld, 
-            //                                     status_fld,
-            //                                     date_submitted_fld
-            //                             FROM club_event_proposal_tbl
-            //                             WHERE status_fld = 'Pending'       
-            //                                 AND                                          
-            //                                 "
-            //                             .
-            //                                 switch(){
-                                                
-            //                                 }
-            //                             .
-            //                                 "
-
-
-            //                             ";
-            
-
-            // switch()
-
 
             ////////////////////////////Queue Rules//////////////////////////////////////////
             $sql_queue_rules = "SELECT a.queue_id_fld as queue_id_fld, 
@@ -266,27 +146,6 @@
             $queue_query = "";
             $department_name = "";
             $program_name = "";
-            
-            // while ($row_department = $result_queue_rules->fetch_assoc()) {
-            // //COLLEGE
-            //     if($row_department['department_id_fld'] == 1){ 
-
-            //         $queue_number = $row['department_id_fld'];
-            //         $queue_query = "AND uname_id_fld = ?";
-            //         switch() {
-
-            //         }
-
-            //         break;
-            //     }elseif($row['department_id_fld'] == 2){
-            // //SENIOR HIGH SCHOOL 
-            //         $queue_number = $row['department_id_fld'];
-            //         $queue_query = "AND uname_id_fld = ?";
-
-
-            //         break;
-            //     }
-            // }
 
             
             while ($row = $result_queue_rules->fetch_assoc()) {
@@ -338,31 +197,8 @@
                     break;
                 }
 
-                // if($row['department_name_fld']){
-                //     $data[] = $row['department_name_fld'];
-                // }
             }
 
-            // echo json_encode($queue_number);
-            ////////////////////////////Queue Rules//////////////////////////////////////////
-
-            // switch ($type) {
-            //     case 'user':
-            //         $sql = "SELECT uname_id_fld AS id, uname_fld AS text FROM user_tbl WHERE uname_fld LIKE ? LIMIT 10";
-            //         break;
-            //     case 'department':
-            //         $sql = "SELECT department_id_fld AS id, department_name_fld AS text FROM department_tbl WHERE department_name_fld LIKE ? LIMIT 10";
-            //         break;
-            //     case 'program':
-            //         $sql = "SELECT program_id_fld AS id, program_name_fld AS text FROM program_tbl WHERE program_name_fld LIKE ? LIMIT 10";
-            //         break;
-            //     case 'queue_number':
-            //         $sql = "SELECT queue_no_id_fld AS id, queue_name_fld AS text FROM queue_tbl WHERE queue_name_fld LIKE ? LIMIT 10";
-            //         break;
-            //     default:
-            //         echo json_encode([]);
-            //         exit;
-            // }
 
             $sql_club_event_proposal = "SELECT club_event_name_fld, 
                                                 target_date_fld, 
@@ -418,22 +254,11 @@
                         ?>
                 </tbody>
             </table>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
+            
+<br><br><br><br><br><br><br><br><br><br><br>
+            
         </div>  
     <?php
-        // echo "<pre>";
-        // print_r($all_club_event_proposal);
-        // echo "</pre>"; 
     ?>
 
 
@@ -456,8 +281,6 @@
                     
                     <label>Venue:</label><br>
                         <textarea type="text" id="modal_venue" name="venue_fld" readonly></textarea><br><br>                        
-                    <!-- <label>Objectives:</label><br>
-                            <input type="text" id="modal_objectives" name="objectives_fld" readonly><br><br> -->
 
                 <!-- rows: height of textarea by default 
                      cols: length of textarea by default -->
@@ -480,7 +303,7 @@
 
 
         
-    <!-- Propose Club Event -->
+    <!-- Propose Club Event Tab -->
         <div id="propose_club_event_id" 
                 class="w3-container tab-content active-tab" 
                 style="margin-top: 10px;">
@@ -519,31 +342,9 @@
                                 name="venue_lbl"
                                 placeholder="Please input your venue here..."
                                 required>
-                            <!-- <select class="js-example-basic-single" name="state"> -->
-                            <!-- <select class="w3-select w3-border"                                
-                                    id="venue_lbl" 
-                                    name="venue_lbl[]"
-                                    multiple>
-                                 <option value="AL">Alabama</option>
-                                <option value="WY">Wyoming</option>
-                            </select> -->
-                            
-                            <!-- <select id="venue_lbl" name="venue_lbl[]" multiple="multiple" style="width: 100%;"></select> -->
-
                             <div class="error-message" id="venue_error">Please enter your proposed Venue here.</div>
                     <br>
                     <br>
-                        <!-- <label for="objectives_lbl" style="margin-top: 10px;">Objectives:</label>
-                        <textarea class="w3-input w3-border" 
-                                    id="objectives_lbl" 
-                                    name="objectives_lbl"
-                                    rows="6" 
-                                    placeholder="Please input your objectives here..." 
-                                    oninput="autoBullet(this)" 
-                                    data-bullet-mode="false" 
-                                    required></textarea> 
-                            <button type="button" class="w3-button w3-small w3-teal w3-margin-bottom" onclick="toggleBulletMode()" style="margin-top: 10px;">Toggle Bullet Mode</button>
-                        -->
                         <label for="objectives_lbl" style="margin-top: 10px;">Objectives:</label>
                             <textarea class="w3-input w3-border" 
                                     id="objectives_lbl" 
@@ -568,15 +369,6 @@
                                 required>
                         <div class="error-message" id="budget_error">Please enter your proposed Budget here.</div>
                     <br>
-                        <!-- <label for="terms_lbl">
-                            <input type="checkbox" id="terms_lbl" name="terms_lbl" required>
-                            I agree to the terms and conditions
-                        </label> 
-
-                    <br>
-                    <br>
-                    <br> -->
-
                         <button type="submit" 
                                 class="w3-button w3-dark-grey w3-margin-top" 
                                 onclick="validateForm(event)">Propose!  <i class="fa fa-magic"></i></button>
@@ -587,20 +379,6 @@
     </div>
 
 <script>    
-    // $(document).ready(function() {
-    //     $('#myTable').DataTable({
-    //         "pageLength": 5,
-    //         "lengthMenu": [5, 10, 20, 50],
-    //         "searching": true,
-    //         "ordering": true,
-    //         "info": true,
-    //         "scrollX": true,
-    //         "responsive": true,
-    //         "language": {
-    //             "search": "Filter records:"
-    //         }
-    //     });
-    // });  
 
     $('#myTable').DataTable({
         pageLength: 5,
@@ -638,7 +416,7 @@
         tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
     }
 
-// Shows the current tab and add an active class to the clicked button
+// Shows the current tab and adds an active class to the clicked button
     document.getElementById(tabName).style.display = "block";
     event.currentTarget.className += " w3-dark-grey";
     }  
@@ -646,124 +424,21 @@
 // Sets the default tab to be open on page load
     document.getElementById("defaultTab").click();
 
-    
-// In your Javascript (external .js resource or <script> tag)
-    // $(document).ready(function() {
-    //     $('.js-example-basic-multiple').select2({
-    //         width: '100%'
-    //     });
-        
-    // });
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// select2 multiple values for venue (On the works)
-//     $(document).ready(function () {
-//     // Initializes Select2 with AJAX for available venues
-//     $('#venue_lbl').select2({
-//         placeholder: "Please select or add venue/s...",
-//         tags: true,
-//         tokenSeparators: [',', ':'],
-//         ajax: {
-//             url: "get-venues.php",
-//             dataType: 'json',
-//             processResults: function (data) {
-//                 // Transforms raw data into Select2-compatible format
-//                 return {
-//                     results: data
-//                 };
-//             }
-//         },
-//         createTag: function (params) {
-//             var term = $.trim(params.term);
-//             if (term === '') {
-//                 return null;
-//             }
-
-//             return {
-//                 id: term,
-//                 text: term,
-//                 newOption: true // Flags to identify new entries
-//             };
-//         }
-//     });
-
-//     // Prepopulates existing selected venues
-//     $.ajax({
-//         url: "get-preselected-venues.php",
-//         dataType: "json",
-//         success: function (preselectedValues) {
-//             preselectedValues.forEach(function (value) {
-//                 // Adds preselected options dynamically
-//                 let option = new Option(value.text, value.id, true, true);
-//                 $('#venue_lbl').append(option);
-//             });
-//             $('#venue_lbl').trigger('change'); // Triggers update
-//         },
-//         error: function (xhr, status, error) {
-//             console.error("Error fetching preselected values:", xhr.responseText, error);
-//         }
-//     });
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 
+<!-- script source for toggle bullet mode -->
 <script src="toggle_bullet_mode.js"></script>
+
+<!-- script source for "View" action button -->
 <script src="user_cep_action.js"></script>
+
+<!-- script source for club event proposal validation -->
 <script src="user_cep_validation.js"></script>
-
-
-
-<!-- border: solid red 3px; -->
 
 
 <!-- End of Header -->
 
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br>
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-16 w3-gray">
@@ -774,7 +449,8 @@
 </div>
 
 <?php }else{
-        
+
+    // Automatically throws user to this link when no account is registered.
         header("Location: index.php");
         exit;
               
